@@ -25,8 +25,10 @@ jobs:
     - name: Set up Android SDK
       uses: android-actions/setup-android@v3
 
-    - name: Install Android SDK Packages
-      run: sdkmanager "platforms;android-34" "build-tools;34.0.0"
+    - name: Install Android SDK Packages and Accept Licenses
+      run: |
+        yes | sdkmanager --licenses
+        sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
     - name: Grant Execute Permission to Gradlew
       run: chmod +x gradlew
